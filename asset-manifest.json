@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/gretracker/static/css/main.59ec4b69.css",
+    "main.js": "/gretracker/static/js/main.66df88bc.js",
+    "index.html": "/gretracker/index.html",
+    "main.59ec4b69.css.map": "/gretracker/static/css/main.59ec4b69.css.map",
+    "main.66df88bc.js.map": "/gretracker/static/js/main.66df88bc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.59ec4b69.css",
+    "static/js/main.66df88bc.js"
+  ]
+}
