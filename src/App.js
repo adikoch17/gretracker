@@ -9,6 +9,8 @@ import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 function App() {
 
@@ -17,7 +19,8 @@ function App() {
   const [open, setOpen]  =  useState(false);
   const [errorOpen,setErrorOpen] = useState(false)
   const [error,setError] = useState("")
-
+  const [alignment, setAlignment] = useState('all');
+  const [filter,setFilter] = useState("all")
   const handleClose = () => {
     setOpen(false);
   };
@@ -33,9 +36,17 @@ function App() {
     setErrorOpen(false)
   }
 
+  const handleAlignmentChange = (event, newAlignment) => {
+    setAlignment(newAlignment);
+    setFilter(event.target.value)
+    console.log(event.target.value)
+  };
+
+
+
 
   const getData = () =>{
-    fetch('https://gretracker-server.herokuapp.com/daily')
+    fetch(`https://gretracker-server.herokuapp.com/daily/${filter}`)
     .then(response => response.json())
     .then(data=>{
       console.log(Object.keys(data).length)
@@ -43,7 +54,7 @@ function App() {
       return x
     })
     .then(y=>{
-      fetch('https://gretracker-server.herokuapp.com/total')
+      fetch(`https://gretracker-server.herokuapp.com/total/${filter}`)
       .then(response => response.json())
       .then(data=>{
         console.log(Object.keys(data).length)
@@ -81,11 +92,16 @@ function App() {
 
   useEffect(()=>{
       refreshData()
-  },[])
+  },[filter])
 
   return (
     <div className="App">
       {/* <button onClick={refreshData}>refreshData</button> */}
+      <ToggleButtonGroup color="primary" value={alignment} exclusive onChange={handleAlignmentChange}>
+        <ToggleButton value="all"  sx={{color: 'rgba(255,255,255,0.6)',borderColor:'rgba(255,255,255,0.1)'}}>All</ToggleButton>
+        <ToggleButton value="quant"  sx={{color: 'rgba(255,255,255,0.6)',borderColor:'rgba(255,255,255,0.1)'}}>Quant</ToggleButton>
+        <ToggleButton value="verbal"  sx={{color: 'rgba(255,255,255,0.6)',borderColor:'rgba(255,255,255,0.1)'}}>Verbal</ToggleButton>
+      </ToggleButtonGroup>
       <Snackbar open={errorOpen} autoHideDuration={6000} onClose={closeError}>
         <Alert onClose={closeError} severity="error" sx={{ width: '100%'}} variant="filled">
           <b>Error: </b>{error}
