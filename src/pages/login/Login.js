@@ -29,25 +29,25 @@ const Login = ({route,setRoute}) =>{
     const loginOnClick = () =>{
 
 
-        axios.post(url,{
-            "email":email,
-            "password":password,
-            "verifyPassword":verifyPassword,
-            "verificationCode":verificationCode
-        },{
-            headers:{
-                'Access-Control-Allow-Origin':'*'
-            }
-        })
-        // let data = {email:email,password:password,verifyPassword:verifyPassword,verificationCode:verificationCode}
-        // fetch(url,{
-        //     method:"POST",
-        //     mode:'cors',
+        // axios.post(url,{
+        //     "email":email,
+        //     "password":password,
+        //     "verifyPassword":verifyPassword,
+        //     "verificationCode":verificationCode
+        // },{
         //     headers:{
-        //         'Content-type':'application/json'
-        //     },
-        //     body:JSON.stringify(data)
+        //         'Access-Control-Allow-Origin':'*'
+        //     }
         // })
+        let data = {email:email,password:password,verifyPassword:verifyPassword,verificationCode:verificationCode}
+        fetch(url,{
+            method:"POST",
+            mode:'cors',
+            headers:{
+                'Content-type':'application/json'
+            },
+            body:JSON.stringify(data)
+        })
         .then(response => response.json())
         .then(data=>{
             console.log(data.message)
