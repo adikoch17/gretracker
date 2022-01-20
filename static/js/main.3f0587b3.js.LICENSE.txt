@@ -11,6 +11,13 @@ object-assign
  * Released under the MIT License
  */
 
+/*!
+ * cookie
+ * Copyright(c) 2012-2014 Roman Shtylman
+ * Copyright(c) 2015 Douglas Christopher Wilson
+ * MIT Licensed
+ */
+
 /** @license MUI v5.2.6
  *
  * This source code is licensed under the MIT license found in the
