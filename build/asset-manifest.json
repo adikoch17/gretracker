@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/gretracker/static/css/main.59ec4b69.css",
-    "main.js": "/gretracker/static/js/main.a0c33896.js",
+    "main.js": "/gretracker/static/js/main.2268ea84.js",
     "index.html": "/gretracker/index.html",
     "main.59ec4b69.css.map": "/gretracker/static/css/main.59ec4b69.css.map",
-    "main.a0c33896.js.map": "/gretracker/static/js/main.a0c33896.js.map"
+    "main.2268ea84.js.map": "/gretracker/static/js/main.2268ea84.js.map"
   },
   "entrypoints": [
     "static/css/main.59ec4b69.css",
-    "static/js/main.a0c33896.js"
+    "static/js/main.2268ea84.js"
   ]
 }

@@ -11,8 +11,9 @@ import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import Button from '@mui/material/Button';
 
-function Home() {
+function Home({user,removeCookie,setRoute}) {
 
   const [daily,setDaily] = useState([])
   const [total,setTotal] = useState([])
@@ -42,11 +43,16 @@ function Home() {
     console.log(event.target.value)
   };
 
+  const onLogoutClick = () =>{
+    removeCookie('user',user,{path:'/'})
+    setRoute("Login")
+  }
+
 
 
 
   const getData = () =>{
-    fetch(`https://gretracker-server.herokuapp.com/daily/${filter}`)
+    fetch(`https://gretracker-server.herokuapp.com/daily/${filter}/${user}`)
     .then(response => response.json())
     .then(data=>{
       console.log(Object.keys(data).length)
@@ -54,7 +60,7 @@ function Home() {
       return x
     })
     .then(y=>{
-      fetch(`https://gretracker-server.herokuapp.com/total/${filter}`)
+      fetch(`https://gretracker-server.herokuapp.com/total/${filter}/${user}`)
       .then(response => response.json())
       .then(data=>{
         console.log(Object.keys(data).length)
@@ -111,6 +117,7 @@ function Home() {
         <CircularProgress color="inherit" />
       </Backdrop>
       <div id="refresh">
+      <Button variant="outlined" onClick={onLogoutClick}>Logout</Button>
       <Tooltip title="Refresh">
         <IconButton onClick={refreshData} aria-label="refresh">
           <RefreshIcon sx={{ color: indigo[50] }}/>
