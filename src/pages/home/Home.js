@@ -44,7 +44,7 @@ function Home({user,removeCookie,setRoute}) {
   };
 
   const onLogoutClick = () =>{
-    removeCookie('user',user,{path:'/'})
+    removeCookie('user',{path:'/'})
     setRoute("Login")
   }
 
